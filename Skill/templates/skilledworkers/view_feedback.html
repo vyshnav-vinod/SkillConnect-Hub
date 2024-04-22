@@ -1,0 +1,36 @@
+{% extends 'skilledworkers/base.html' %}
+{% load static %}
+ {% block content %}
+
+ <div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Feedbacks</strong></h1><br></center>
+    <table class="table table-bordered table-hover">
+            <tr>			
+                {% comment %} <th class="p-3 mb-2 bg-primary text-light">Shop details </th> {% endcomment %}
+              
+                <th class="p-3 mb-2 bg-primary text-light">Subject</th> 
+           
+               <th class="p-3 mb-2 bg-primary text-light">Feedback</th> 
+              
+                  {% comment %} <th class="p-3 mb-2 bg-primary text-light">Delete</th> {% endcomment %}
+            </tr> 
+            
+            {% for x in pr %}
+            <tr>
+                    
+                    <td>
+                        {{x.subject}}<br>
+                   
+                        
+                    </td> 
+                    <td>{{x.feedback}}</td>
+                    {% comment %} <td><a href="cancel_order?id={{ x.id}}" class=" btn btn-danger">Cancel</a></td>
+                     <td><a href="Add_Pet_feedback?id={{ x.id}}" class=" btn btn-success">Feedback</a></td> {% endcomment %}
+
+            </tr>  
+            {% endfor %}
+
+    </table>
+</div>
+
+ {% endblock %}

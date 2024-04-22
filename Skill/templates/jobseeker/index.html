@@ -1,0 +1,157 @@
+{% extends 'jobseeker/base.html' %}
+{% load static %}
+ {% block content %}
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{% static 'img/carousel-1.jpg' %}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Unlocking Opportunities, Building Futures</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Unlocking Opportunities</h1>
+                            {% comment %} <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
+                            <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{% static 'img/carousel-2.jpg' %}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Unlocking Opportunities, Building Futures</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Unlocking Opportunities</h1>
+                            {% comment %} <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
+                            <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Navbar & Carousel End -->
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+
+
+
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+        <div class="container">
+          {% comment %} <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+              <h2 class="mb-4">Register for more details</h2>
+            </div>
+          </div> {% endcomment %}
+    
+          <div class="row block-9">
+            <div class="col-md-8">
+                        <h2 class="mb-3 bread">Search Jobs</h2>
+              <form action="" method="post" enctype="multipart/form-data" class="p-4 p-md-5 contact-form">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" name="job" class="form-control" placeholder="Search Product">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group" aling="center">
+                      <input type="submit" name="add" value="Search Now" class="btn btn-primary py-3 px-5">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          
+          </div>
+        </div>
+      </section>
+ 
+
+    <!-- Service Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Job Vacancies</h5>
+                {% comment %} <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1> {% endcomment %}
+            </div>
+            <div class="row g-5">
+                {% for i in ski %}
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                        <div class="service-icon">
+                            <i class="fa fa-shield-alt text-white"></i>
+                        </div>
+                        <h4 class="mb-3">{{ i.jobtitle }}</h4>
+                        <p class="m-0">Experience: {{ i.experience }}</p>
+                        <p class="m-0">Qualification: {{ i.qualification }}</p>
+                        <p class="m-0">{{ i.description }}</p>
+                        <a class="btn btn-lg btn-primary rounded" href="AddApplication?id={{ i.id }}">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+
+  
+
+
+
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    <img src="{% static 'img/vendor-1.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-2.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-3.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-4.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-5.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-6.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-7.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-8.jpg' %}" alt="">
+                    <img src="{% static 'img/vendor-9.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
+    
+   {% endblock content %}

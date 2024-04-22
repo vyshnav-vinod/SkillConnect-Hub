@@ -1,0 +1,44 @@
+{% extends 'privatesectors/base.html' %}
+{% load static %}
+ {% block content %}
+
+ <br><br><br><br><br>
+ <!-- Contact Start -->
+ <div class="container-xxl py-5">
+     <div class="container">
+         <div class="row g-0">
+             <div class="col-lg-8 wow fadeIn" data-wow-delay="0.1s">
+                 <div class="bg-secondary p-5">
+                     <p class="d-inline-block bg-dark text-primary py-1 px-4">Interview Details</p>
+<!--                        <h1 class="text-uppercase mb-4">Have Any Query? Please Contact Us!</h1>-->
+<!--                        <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>-->
+                     <table class="table table-bordered table-striped table-hover">
+
+<th class="info" style="background-color: white;">Interview Details</th>
+<th class="info" style="background-color: white;">Description</th>
+<th class="info" style="background-color: white;" colspan="2">Status</th>
+
+{% for dri in ski  %}
+
+<tr>
+ <td style="background-color: white;" >Date: {{ dri.date }}<br>
+    Time: {{ dri.time}}<br>
+   
+ </td>
+ <td style="background-color: white;">{{ dri.description}}<br>
+   
+</td>
+<td style="background-color: white;"> {{ dri.status }} </td>
+</tr>
+
+ {% endfor %}
+</table>
+                 </div>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!-- Contact End -->
+
+ {% endblock %}
